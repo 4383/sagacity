@@ -1,0 +1,42 @@
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<style>
+canvas {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+</style>
+<body>
+<div>
+    <canvas id="canvas"></canvas>
+</div>
+</body>
+<script>
+function newDateString(given) {
+    return moment(given)
+}
+var ctx = canvas.getContext('2d');
+var config = {
+    type: 'line',
+    data: {
+        datasets: [{
+            data: [
+                newDateString('2020-10-22 18:48'),
+                newDateString('2020-10-19 15:32')
+            ]
+        }],
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                type: 'time',
+            }]
+        }
+    }
+};
+
+var chart = new Chart(ctx, config);
+</script>
+</html>
